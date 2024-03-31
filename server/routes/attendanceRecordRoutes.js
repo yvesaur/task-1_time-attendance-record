@@ -70,7 +70,7 @@ router.post("/api/v1/auth/user/:id/time-in", async (req, res) => {
       });
     }
 
-    console.log(record);
+    // console.log(record);
     res.status(200).json({
       status: "success",
       results: 2,

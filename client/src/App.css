@@ -1,0 +1,51 @@
+.headline-medium {
+  color: black;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 36px;
+  word-wrap: break-word;
+}
+
+.headline-small {
+  color: black;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  word-wrap: break-word;
+}
+
+.title-large {
+  color: black;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 28px;
+  word-wrap: break-word;
+}
+
+.title-medium {
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.0015rem;
+  word-wrap: break-word;
+}
+
+.body-large {
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.005rem;
+  word-wrap: break-word;
+}
+
+.label-large,
+::placeholder {
+  color: var(--outline-clr);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.001rem;
+  word-wrap: break-word;
+}

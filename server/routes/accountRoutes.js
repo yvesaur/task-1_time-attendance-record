@@ -178,7 +178,7 @@ router.get("/api/v1/auth/isAuthorized", isUserAuthorized, async (req, res) => {
       message: "User is verified to access requests.",
     });
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 });
 
