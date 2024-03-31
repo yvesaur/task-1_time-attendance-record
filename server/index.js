@@ -1,4 +1,5 @@
 require("dotenv").config({ path: require("find-config")(".env") });
+process.env.TZ = "Europe/Amsterdam";
 
 // IMPORTS
 const express = require("express");

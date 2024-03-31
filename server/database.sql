@@ -33,3 +33,42 @@ SELECT
     project
 FROM
     users;
+
+SELECT
+    *
+FROM
+    attendance_records
+WHERE
+    DATE (date) = CURDATE ()
+    AND user_id = ?
+INSERT INTO
+    attendance_records (user_id, date, time_in, time_out, computer)
+VALUES
+    (
+        1,
+        CURDATE (),
+        '08:00:00',
+        '17:00:00',
+        'Computer1'
+    ),
+    (
+        2,
+        CURDATE (),
+        '09:00:00',
+        '18:00:00',
+        'Computer2'
+    ),
+    (
+        3,
+        CURDATE (),
+        '10:00:00',
+        '19:00:00',
+        'Computer3'
+    );
+
+UPDATE attendance_records
+SET
+    time_out = CURTIME ()
+WHERE
+    user_id = ?
+    AND DATE (date) = CURDATE ()

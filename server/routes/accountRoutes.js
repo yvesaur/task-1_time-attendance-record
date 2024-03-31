@@ -160,7 +160,7 @@ router.get("/api/v1/auth/getUsers/all", async (req, res) => {
 
     res.status(200).json({
       status: "success",
-      results: 1,
+      results: getAllUsers.length,
       data: getAllUsers,
       message: "Account registered successfully!",
     });
