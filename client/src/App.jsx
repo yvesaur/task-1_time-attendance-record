@@ -4,6 +4,8 @@ import { ToastContainer } from "react-toastify";
 import "./App.css";
 import { AppContextProvider } from './context/AppContext';
 import Home from './pages/Home';
+import Register from "./pages/Register";
+import UserProfile from "./pages/UserProfile";
 
 const App = () => {
   return (
@@ -12,6 +14,8 @@ const App = () => {
         <Router>
           <Routes>
             <Route exact path="" element={<Home />} />
+            <Route exact path="/account/register" element={<Register />} />
+            <Route exact path="/user/:id/profile" element={<UserProfile />} />
           </Routes>
         </Router>
 

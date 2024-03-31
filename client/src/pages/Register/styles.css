@@ -1,0 +1,19 @@
+.signup-text_fields-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 32px;
+}
+
+.registerBtn-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+
+.register-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}

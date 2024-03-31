@@ -1,3 +1,4 @@
+/* GLOBAL CSS STYLES */
 .headline-medium {
   color: black;
   font-size: 28px;
@@ -49,3 +50,66 @@
   letter-spacing: 0.001rem;
   word-wrap: break-word;
 }
+
+.page-style-gradient {
+  background: linear-gradient(180deg, #4276c6 0%, #3d4d64 100%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-style {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-start;
+  height: fit-content;
+  width: fit-content;
+  background-color: var(--on-primary-clr);
+  border-radius: 12px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+  padding: 16px;
+}
+
+.form-heading {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 8px;
+  border-bottom: 1px var(--outline-clr) solid;
+}
+
+.text_field-heading-partition {
+  padding-top: 32px;
+  padding-bottom: 8px;
+}
+
+.text_field-container-input-styles > input {
+  padding: 18px 16px;
+  border-radius: 8px;
+  border: 1px var(--outline-clr) solid;
+}
+
+.form-button-style {
+  padding: 10px 24px;
+  border-radius: 8px;
+  background-color: var(--primary-clr);
+  border: none;
+  width: 270px;
+  color: var(--on-primary-clr);
+}
+
+.form-btn-container-partition {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+
+.formBtn-section-style > p {
+  color: var(--outline-clr);
+}
+
+.formBtn-section-style > p > a {
+  color: var(--primary-clr1);
+}
+/* GLOBAL CSS STYLES */

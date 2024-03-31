@@ -1,9 +1,13 @@
 // import React from 'react'
+import RegisterForm from "./RegisterForm"
+import "./styles.css"
 
-const index = () => {
+const Register = () => {
     return (
-        <div>index</div>
+        <main id="register-page" className="page-style-gradient">
+            <RegisterForm />
+        </main>
     )
 }
 
-export default index
+export default Register

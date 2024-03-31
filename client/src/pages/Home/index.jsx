@@ -4,7 +4,7 @@ import "./styles.css";
 
 const Home = () => {
   return (
-    <main id="login-page">
+    <main id="login-page" className="page-style-gradient">
       <LoginForm />
     </main>
   );
