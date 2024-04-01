@@ -17,3 +17,8 @@
   align-items: center;
   height: 40px;
 }
+
+.name-field {
+  display: flex;
+  gap: 8px;
+}

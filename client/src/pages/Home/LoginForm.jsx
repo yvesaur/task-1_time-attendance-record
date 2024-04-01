@@ -6,7 +6,7 @@ import { AppContext } from '../../context/AppContext';
 import "./styles.css";
 
 const LoginForm = () => {
-    const { notifySuccess, notifyError, setAuth, setCurrentUserInfo, currentUserInfo } = useContext(AppContext);
+    const { notifySuccess, notifyError, setAuth, setCurrentUserInfo } = useContext(AppContext);
     const [inputs, setInputs] = useState({
         username: "",
         password: ""
@@ -37,6 +37,7 @@ const LoginForm = () => {
                     }
                 })
                 setCurrentUserInfo(userInfoResponse.data.data)
+                localStorage.setItem("username", userInfoResponse.data.data.username)
 
                 notifySuccess(response.data.message);
                 setAuth(true);

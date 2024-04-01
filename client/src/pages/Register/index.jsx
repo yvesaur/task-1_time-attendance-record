@@ -1,12 +1,27 @@
 // import React from 'react'
-import RegisterForm from "./RegisterForm"
-import "./styles.css"
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
+import RegisterForm from "./RegisterForm";
+import "./styles.css";
 
 const Register = () => {
+    const { isAuthenticated, currentUserInfo, isAuth } = useContext(AppContext);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        isAuth();
+    })
     return (
-        <main id="register-page" className="page-style-gradient">
-            <RegisterForm />
-        </main>
+        !isAuthenticated ? (
+            <main id="register-page" className="page-style-gradient">
+                <RegisterForm />
+            </main>
+        ) : (
+            navigate(`/user/${currentUserInfo.user_id}/profile`)
+        )
+
     )
 }
 

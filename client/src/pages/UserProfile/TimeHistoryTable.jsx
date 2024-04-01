@@ -1,7 +1,31 @@
 // import React from 'react'
-import './TimeHistoryTable.css'
+import { useContext, useEffect, useState } from 'react';
+import Fetch from '../../api/Fetch';
+import { AppContext } from '../../context/AppContext';
+import { convertDatesToLocale } from '../../utils/convertDatesToLocale';
+import './TimeHistoryTable.css';
 
-const TimeHistoryTable = () => {
+const TimeHistoryTable = ({ attendanceButtonClicked }) => {
+    const { currentUserInfo } = useContext(AppContext);
+    const [userTimeHistoryRecords, setUserTimeHistoryRecords] = useState([])
+
+    useEffect(() => {
+        const fetchUserRecords = async () => {
+            try {
+                const response = await Fetch.get(`/auth/user/${currentUserInfo.user_id}/records`);
+
+                const responseParsedDate = convertDatesToLocale(response.data.data)
+
+                console.log(responseParsedDate)
+                setUserTimeHistoryRecords(responseParsedDate)
+
+            } catch (error) {
+                console.error(error.message)
+            }
+        };
+        fetchUserRecords();
+    }, [currentUserInfo, attendanceButtonClicked])
+
     return (
         <main id="time-history-table">
             <table>
@@ -14,67 +38,21 @@ const TimeHistoryTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>text1.1</td>
-                        <td>text1.2</td>
-                        <td>text1.3</td>
-                        <td>text1.1</td>
-                    </tr>
-                    <tr>
-                        <td>text2.1</td>
-                        <td>text2.2</td>
-                        <td>text2.3</td>
-                        <td>text1.1</td>
-                    </tr>
-                    <tr>
-                        <td>text3.1</td>
-                        <td>text3.2</td>
-                        <td>text3.3</td>
-                        <td>text1.1</td>
-                    </tr>
-                    <tr>
-                        <td>text3.1</td>
-                        <td>text3.2</td>
-                        <td>text3.3</td>
-                        <td>text1.1</td>
-                    </tr>
-                    <tr>
-                        <td>text3.1</td>
-                        <td>text3.2</td>
-                        <td>text3.3</td>
-                        <td>text1.1</td>
+                    {userTimeHistoryRecords.length > 0 ? (
+                        [...userTimeHistoryRecords].reverse().map((record) => {
+                            return (
+                                <tr key={record.time_history_id}>
+                                    <td>{record.date}</td>
+                                    <td>{record.time_in}</td>
+                                    <td>{record.time_out}</td>
+                                    <td>{record.computer}</td>
+                                </tr>
+                            );
+                        })
+                    ) : (
+                        <div>Loading...</div>
+                    )}
 
-                    </tr>
-                    <tr>
-                        <td>text3.1</td>
-                        <td>text3.2</td>
-                        <td>text3.3</td>
-                        <td>text1.1</td>
-                    </tr>
-                    <tr>
-                        <td>text3.1</td>
-                        <td>text3.2</td>
-                        <td>text3.3</td>
-                        <td>text1.1</td>
-                    </tr>
-                    <tr>
-                        <td>text3.1</td>
-                        <td>text3.2</td>
-                        <td>text3.3</td>
-                        <td>text1.1</td>
-                    </tr>
-                    <tr>
-                        <td>text3.1</td>
-                        <td>text3.2</td>
-                        <td>text3.3</td>
-                        <td>text1.1</td>
-                    </tr>
-                    <tr>
-                        <td>text3.1</td>
-                        <td>text3.2</td>
-                        <td>text3.3</td>
-                        <td>text1.1</td>
-                    </tr>
                 </tbody>
             </table>
         </main>

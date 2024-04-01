@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Fetch from "../api/Fetch";
 
@@ -17,6 +17,24 @@ export const AppContextProvider = (props) => {
     }
   }
   */
+
+  useEffect(() => {
+    const fetchCurrentUserInfo = async () => {
+      try {
+        if (localStorage.username && localStorage.token) {
+          const userInfoResponse = await Fetch.get(`/auth/user/${localStorage.username}`, {
+            headers: {
+              token: localStorage.token
+            }
+          })
+          setCurrentUserInfo(userInfoResponse.data.data)
+        }
+      } catch (error) {
+        console.error(error.message)
+      }
+    };
+    fetchCurrentUserInfo()
+  }, [])
 
 
   const notifySuccess = (text) =>

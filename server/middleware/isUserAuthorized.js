@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
 
     if (!jwtToken) {
       return res
-        .status(403)
+        .status(200)
         .json("You are not authorize to access this request!");
     }
 
@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
   } catch (error) {
     console.error(error.message);
     return res
-      .status(403)
+      .status(200)
       .json("You are not authorize to access this request!");
   }
 };
