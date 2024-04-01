@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 const generateJwt = require("../utils/generateJwt");
 const isValidInfo = require("../middleware/isValidInfo");
 const isUserAuthorized = require("../middleware/isUserAuthorized");
+const e = require("express");
 
 // REQUESTS
 
@@ -38,7 +39,7 @@ router.post("/api/v1/auth/account/register", isValidInfo, async (req, res) => {
     );
 
     if (user.length !== 0) {
-      return res.status(409).json("USER ALREADY EXISTS!");
+      return res.status(200).json("USER ALREADY EXISTS!");
     }
 
     // Encrypt the password using hash and salt
@@ -91,6 +92,33 @@ router.post("/api/v1/auth/account/register", isValidInfo, async (req, res) => {
       data: { token: token },
       message: "Account registered successfully!",
     });
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+// Check if user already exists
+router.get("/api/v1/auth/checkUserExists/:username", async (req, res) => {
+  try {
+    const { username } = req.params;
+
+    const [user] = await pool.query(
+      `
+      SELECT
+          username
+      FROM
+          users
+      WHERE
+          username = ?
+      `,
+      [username]
+    );
+
+    if (user.length !== 0) {
+      return res.status(200).json(true);
+    } else {
+      return res.status(200).json(false);
+    }
   } catch (error) {
     console.error(error.message);
   }

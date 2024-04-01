@@ -30,25 +30,29 @@ const RegisterForm = () => {
         const username = e.target.username.value;
         const password = e.target.password.value;
         const confirmPassword = e.target.confirmPassword.value;
-        // const birthdate = new Date(e.target.date.value);
+        const birthdateCompare = new Date(e.target.date.value);
 
         // Check if passwords match
         if (password !== confirmPassword) {
             notifyError('Passwords do not match');
             return;
         }
-
-        /*
         // Check if user is under 18
         const eighteenYearsAgo = new Date();
         eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
-        if (birthdate > eighteenYearsAgo) {
+        if (birthdateCompare > eighteenYearsAgo) {
             notifyError('You must be 18 years old or above');
             return;
         }
-        */
 
         try {
+            const isUsernameExists = await Fetch.get(`/auth/checkUserExists/${username}`)
+
+            console.log(isUsernameExists)
+            if (isUsernameExists.data) {
+                notifyError("Username already exists, try another one.")
+            }
+
             const date = new Date('2002-06-10T00:00:00.000Z');
             const year = date.getUTCFullYear();
             const month = date.getUTCMonth() + 1; // Months are 0-indexed in JavaScript
