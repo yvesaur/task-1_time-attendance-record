@@ -8,7 +8,7 @@ import TimeHistoryTable from "./TimeHistoryTable"
 const UserDashboard = () => {
     const { currentUserInfo, notifySuccess, notifyError } = useContext(AppContext);
     const [enteredUsername, setEnteredUsername] = useState('');
-    const [isEnteredUsernameValid, setIsEnteredUsernameValid] = useState(true);
+    const [isEnteredUsernameValid, setIsEnteredUsernameValid] = useState(false);
     const [attendanceButtonClicked, setAttendanceButtonClicked] = useState(0);
 
     const validateUsername = (input) => {

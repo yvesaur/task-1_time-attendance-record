@@ -50,7 +50,7 @@ const TimeHistoryTable = ({ attendanceButtonClicked }) => {
                             );
                         })
                     ) : (
-                        <div>Loading...</div>
+                        <></>
                     )}
 
                 </tbody>

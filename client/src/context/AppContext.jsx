@@ -34,7 +34,7 @@ export const AppContextProvider = (props) => {
       }
     };
     fetchCurrentUserInfo()
-  }, [])
+  }, [isAuthenticated])
 
 
   const notifySuccess = (text) =>
