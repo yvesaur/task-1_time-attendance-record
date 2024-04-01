@@ -1,0 +1,90 @@
+#user-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#user-dashboard {
+  background-color: var(--primary-clr);
+  border-radius: 8px;
+  gap: 16px;
+  padding: 8px;
+  width: 680px;
+}
+
+.user-details,
+.attendance-function-section,
+.time-history-section {
+  background-color: var(--on-primary-clr);
+  padding: 16px;
+  display: flex;
+  border-radius: 8px;
+}
+
+.user-details {
+  flex-direction: column;
+  gap: 16px;
+}
+
+.attendance-function-section {
+  gap: 8px;
+  padding: 8px 16px;
+}
+
+.time-history-section {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attendance-function-section > div:first-child > input {
+  padding: 14px 16px;
+  flex: 1 0 0;
+  border: 1px solid var(--outline-clr);
+  border-radius: 8px;
+}
+
+.user-info {
+  display: flex;
+  gap: 16px;
+}
+
+.user-basic-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 1 auto;
+}
+
+.user-basic-info > div {
+  display: flex;
+  gap: 4px;
+  padding: 9px;
+}
+
+.user-profile-picture {
+  height: 224px;
+  width: 224px;
+  border: 2px var(--outline-clr) solid;
+}
+
+.login-details {
+  padding: 8px 16px;
+}
+
+.attendance-function-section > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+}
+
+.login-logout-btn {
+  background-color: var(--primary-clr);
+  padding: 10px 24px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  color: var(--on-primary-clr);
+}

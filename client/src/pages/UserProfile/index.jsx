@@ -1,9 +1,12 @@
 // import React from 'react'
+import UserDashboard from "./UserDashboard"
 import "./styles.css"
 
 const UserProfile = () => {
     return (
-        <div>index</div>
+        <main id="user-profile">
+            <UserDashboard />
+        </main>
     )
 }
 

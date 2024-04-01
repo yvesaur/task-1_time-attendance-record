@@ -116,14 +116,14 @@ router.post("/api/v1/auth/account/login", isValidInfo, async (req, res) => {
 
     if (user.length == 0) {
       return res
-        .status(401)
+        .status(200)
         .json("Password or Email is incorrect! Please Try Again.");
     }
 
     // Compare if inputted password is the same to password in Database
     const isPasswordValid = await bcrypt.compare(password, user[0].password);
     if (!isPasswordValid) {
-      return res.status(401).json("Password is incorrect! Please try again.");
+      return res.status(200).json("Password is incorrect! Please try again.");
     }
 
     // Generate token session for new user
@@ -168,6 +168,47 @@ router.get("/api/v1/auth/getUsers/all", async (req, res) => {
     console.error(error.message);
   }
 });
+
+// Get user info
+router.get(
+  "/api/v1/auth/user/:username",
+  isUserAuthorized,
+  async (req, res) => {
+    try {
+      const { username } = req.params;
+
+      const [user] = await pool.query(
+        `
+        SELECT
+            user_id,
+            username,
+            first_name,
+            last_name,
+            DATE_FORMAT(birthdate, '%m-%d-%Y') as birthdate,
+            department,
+            project
+        FROM
+            users
+        WHERE
+            username = ?
+      `,
+        [username]
+      );
+
+      if (user.length === 0) {
+        return res.status(404).json("User not found!");
+      }
+
+      res.status(200).json({
+        status: "success",
+        data: user[0],
+        message: "User information retrieved successfully!",
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+);
 
 // Verify the authenticity of the user
 router.get("/api/v1/auth/isAuthorized", isUserAuthorized, async (req, res) => {

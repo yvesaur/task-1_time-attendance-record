@@ -84,7 +84,9 @@
   padding-bottom: 8px;
 }
 
-.text_field-container-input-styles > input {
+.text_field-container-input-styles > input,
+.description-field-styles > div,
+.description-field-style {
   padding: 18px 16px;
   border-radius: 8px;
   border: 1px var(--outline-clr) solid;
@@ -112,4 +114,29 @@
 .formBtn-section-style > p > a {
   color: var(--primary-clr1);
 }
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--outline-clr);
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--cell_header-clr);
+}
+
+a:hover {
+  cursor: pointer;
+}
+
 /* GLOBAL CSS STYLES */
