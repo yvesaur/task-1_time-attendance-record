@@ -88,3 +88,13 @@
   border: none;
   color: var(--on-primary-clr);
 }
+
+.user-main-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-main-heading > h1 {
+  flex: 1 1 0;
+}

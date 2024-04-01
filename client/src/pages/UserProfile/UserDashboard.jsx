@@ -1,5 +1,6 @@
 // import React from 'react'
 import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import Fetch from "../../api/Fetch"
 import userPicture from "../../assets/img/user_picture.svg"
 import { AppContext } from "../../context/AppContext"
@@ -10,6 +11,7 @@ const UserDashboard = () => {
     const [enteredUsername, setEnteredUsername] = useState('');
     const [isEnteredUsernameValid, setIsEnteredUsernameValid] = useState(false);
     const [attendanceButtonClicked, setAttendanceButtonClicked] = useState(0);
+    const navigate = useNavigate();
 
     const validateUsername = (input) => {
         if (input === currentUserInfo.username) {
@@ -36,7 +38,15 @@ const UserDashboard = () => {
     return (
         <main id="user-dashboard" className="form-style">
             <div className="user-details">
-                <h1 className="userId title-large"><b>USERNAME:</b> {currentUserInfo.username}</h1>
+                <div className="user-main-heading">
+                    <h1 className="userId title-large"><b>USERNAME:</b> {currentUserInfo.username}</h1>
+                    <button className="fa-solid fa-right-from-bracket login-logout-btn" onClick={() => {
+                        localStorage.removeItem("token")
+                        localStorage.removeItem("username")
+                        notifySuccess("Logged Out Successfully.")
+                        navigate("/")
+                    }}></button>
+                </div>
                 <div className="user-info">
                     <img className="user-profile-picture" src={userPicture} alt="User's Profile Picture" />
                     <dl className="user-basic-info description-field-styles">
@@ -96,7 +106,7 @@ const UserDashboard = () => {
                                 notifyError("Username entered is incorrect. Please try again.")
                             }
                         }}
-                    >LOGIN/LOGOUT</button>
+                    >TIME-IN/TIME-OUT</button>
                 </div>
             </div>
             <div className="time-history-section">
